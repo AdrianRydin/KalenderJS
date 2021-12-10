@@ -10,13 +10,15 @@
 
 </head>
 <body>
-    <header class="flex w-100 red justify-end">
-        <a href="" class="icon mr-4" onclick="burgerMenu()">
+    <header class="flex w-100 slategray justify-end">
+        <a href="javascript:void(0);" class="icon mr-4 absolute z-100" onclick="burgerMenu()">
             <i class="fa fa-bars font-2r"></i>
         </a>
-        <div id="burgerList" class="burgerlist absolute">
-            <a href="">ToDo</a>
-            <a href="">Calendar</a>
+        <div id="burgerList" class="burgerlist absolute z-10">
+            <div class="flex flex-col lineheight">
+                <a href="" class="font-2r">ToDo</a>
+                <a href="" class="font-2r">Calendar</a>
+            </div>
         </div>
     </header>
     <div id="toDo" class="">

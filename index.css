@@ -6,6 +6,10 @@
 header{
     height: 3rem;
 }
+a{
+    text-decoration: none;
+    color: black;
+}
 .absolute{
     position: absolute;
 }
@@ -23,6 +27,9 @@ header{
 .flex{
     display: flex;
 }
+.flex-col{
+    flex-direction: column;
+}
 .justify-end{
     justify-content: flex-end;
 }
@@ -35,7 +42,12 @@ header{
 .mr-4{
     margin-right: 1rem;
 }
-
+.z-100{
+    z-index: 100;
+}
+.z-10{
+    z-index: 10;
+}
 .red{
     background-color: red;
 }
@@ -44,14 +56,30 @@ header{
     background-color: lightblue;
 }
 
+.slategray{
+    background-color: slategray;
+}
+
 .emojiSize{
     font-size: 5rem;
 }
-
+.lineheight{
+    line-height: 4rem;
+}
 .font-2r{
     font-size: 2rem;
 }
 .burgerlist{
     display: none;
+    margin-top: 3rem;
+    background-color: lightslategray;
+    width: 20rem;
+    height: 100%;
+    right: -20rem;
+    animation: slide .5s forwards;
+}
+
+@keyframes slide{
+    100% { right: 0; }
 }
 
