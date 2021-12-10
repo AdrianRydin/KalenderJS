@@ -8,6 +8,7 @@ let today;
 let daySelector = document.getElementById("day");
 let dateSelector = document.getElementById("date");
 let timeSelector = document.getElementById("time");
+let emojiSelector = document.getElementById("weatherEmoji");
 
 function getDate() {
     switch (weekDay) {
@@ -54,7 +55,6 @@ let tempSelector = document.getElementById("temp");
 
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
-      console.log(position);
       lon = position.coords.longitude;
       lat = position.coords.latitude;
   
@@ -72,13 +72,25 @@ if (navigator.geolocation) {
           return response.json();
         })
         .then((data) => {
-          console.log(data);
+            let temp = Math.floor(data.main.temp - kelvin);
           tempSelector.textContent = 
-              Math.floor(data.main.temp - kelvin) + "°C";
+              temp + "°C";
+            if (temp <= 0) {
+                emojiSelector.innerHTML = "\u{1F976}"
+            }else if(temp >= 14 && temp < 30){
+                emojiSelector.innerHTML = "\u{1F973}"
+            }else if (temp >= 30){
+                emojiSelector.innerHTML = "\u{1F975}"
+            }else {
+                emojiSelector.innerHTML = "\u{1F912}"
+            }
         });
     });
   }
+  
 }
+
+
 
 
 window.addEventListener("load", () => {
