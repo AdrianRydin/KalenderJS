@@ -1,0 +1,56 @@
+body{
+    margin:0;
+    padding: 0;
+}
+
+header{
+    height: 10vh;
+    width: 100%;
+    background-color: #FF5050;
+}
+
+
+#left-section{
+    width: 20vw;
+    background-color: #D1D1D1;
+    height: 90vh;
+    margin:0;
+    padding: 0;
+    position: relative;
+}
+
+#calendar{
+    height: 90vh;
+    width: 80vw;
+    background-color: #585555;
+    left: 20vw;
+    top: 10vh;
+    position: absolute;
+}
+
+.date-grid {
+    height: 85vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    row-gap: 0.5rem;
+    grid-template-rows: repeat(5, 1fr);
+    column-gap: 0.5rem;
+}
+
+.date-grid > section{
+    border: 1px solid black;
+    background-color: #F1F1F1;
+}
+
+.day-of-week{
+    height: 5vh;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    background-color: #C4C4C4;
+}
+
+.next-month{
+    background-color: #a0a0a0 !important;
+}
