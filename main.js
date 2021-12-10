@@ -73,7 +73,7 @@ if (navigator.geolocation) {
         })
         .then((data) => {
             let temp = Math.floor(data.main.temp - kelvin);
-          tempSelector.textContent = 
+          tempSelector.innerHTML = 
               temp + "°C";
             if (temp <= 0) {
                 emojiSelector.innerHTML = "\u{1F976}"
@@ -90,8 +90,14 @@ if (navigator.geolocation) {
   
 }
 
-
-
+function burgerMenu() {
+    let x = document.getElementById("burgerList");
+    if (x.style.display === "block") {
+      x.style.display = "none";
+    } else {
+      x.style.display = "block";
+    }
+  }
 
 window.addEventListener("load", () => {
     getWeather();

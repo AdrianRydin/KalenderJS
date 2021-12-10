@@ -5,24 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalender</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="index.css">
+
 </head>
 <body>
-
+    <header class="flex w-100 red justify-end">
+        <a href="" class="icon mr-4" onclick="burgerMenu()">
+            <i class="fa fa-bars font-2r"></i>
+        </a>
+        <div id="burgerList" class="burgerlist absolute">
+            <a href="">ToDo</a>
+            <a href="">Calendar</a>
+        </div>
+    </header>
     <div id="toDo" class="">
-        <div id="toDoTop" class="flex">
+        <div id="toDoTop" class="flex justify-center align-center">
             <div id="weatherEmoji" class="emojiSize red">
 
             </div>
             <div id="dayInfo" class="blue">
-                <p id="day"></p>
-                <p id="date"></p>
-                <p id="time"></p>
-                <p id="temp"></p>
+                <p id="day" class="font-2r"></p>
+                <p id="date" class="font-2r"></p>
+                <p id="time" class="font-2r"></p>
+                <p id="temp" class="font-2r"></p>
             </div>
         </div>
-        <div id="toDoBot" class="">
-
+        <div id="toDoBot" class="todolist vh-100 w-100 red">
+            
         </div>
     </div>
 
