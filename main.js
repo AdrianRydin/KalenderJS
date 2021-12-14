@@ -73,8 +73,7 @@ if (navigator.geolocation) {
         })
         .then((data) => {
             let temp = Math.floor(data.main.temp - kelvin);
-          tempSelector.innerHTML = 
-              temp + "°C";
+          tempSelector.innerHTML = temp + "°C";
             if (temp <= 0) {
                 emojiSelector.innerHTML = "\u{1F976}"
             }else if(temp >= 14 && temp < 30){

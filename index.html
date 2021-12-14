@@ -11,13 +11,13 @@
 </head>
 <body>
     <header class="flex w-100 slategray justify-end">
-        <a href="javascript:void(0);" class="icon mr-4 absolute z-100" onclick="burgerMenu()">
+        <a href="javascript:void(0);" class="icon mr-4 absolute z-100 burger" onclick="burgerMenu()">
             <i class="fa fa-bars font-2r"></i>
         </a>
         <div id="burgerList" class="burgerlist absolute z-10">
             <div class="flex flex-col lineheight">
-                <a href="" class="font-2r">ToDo</a>
-                <a href="" class="font-2r">Calendar</a>
+                <a href="" class="font-2r ">ToDo</a>
+                <a href="" class="font-2r ">Calendar</a>
             </div>
         </div>
     </header>
@@ -26,15 +26,24 @@
             <div id="weatherEmoji" class="emojiSize red">
 
             </div>
-            <div id="dayInfo" class="blue">
-                <p id="day" class="font-2r"></p>
+            <div id="dayInfo" class="blue flex flex-col align-center">
+                <p id="day" class="font-2r uppercase"></p>
                 <p id="date" class="font-2r"></p>
                 <p id="time" class="font-2r"></p>
                 <p id="temp" class="font-2r"></p>
             </div>
         </div>
-        <div id="toDoBot" class="todolist vh-100 w-100 red">
-            
+        <div id="toDoBot" class="todolist vh-100 w-100 red flex flex-col align-center">
+            <form action="" name="form_main">
+                <input type="text" name="task" id="task" class="addinput"/>
+                <button type="button" onclick="add()" class="button-3">Add</button>
+            </form>
+
+            <fieldset>
+                <ul>
+
+                </ul>
+            </fieldset>
         </div>
     </div>
 
@@ -43,6 +52,8 @@
     </div>
 
     <script src="main.js"></script>
+    <script src="todo.js"></script>
+
 
 </body>
 </html>
