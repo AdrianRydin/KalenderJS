@@ -1,31 +1,8 @@
-body{
-    margin:0;
-    padding: 0;
-}
-
-header{
-    height: 10vh;
-    width: 100%;
-    background-color: #FF5050;
-}
-
-
-#left-section{
-    width: 20vw;
-    background-color: #D1D1D1;
-    height: 90vh;
-    margin:0;
-    padding: 0;
-    position: relative;
-}
-
-#calendar{
+.calendar{
+    display: none;
     height: 90vh;
     width: 80vw;
     background-color: #585555;
-    left: 20vw;
-    top: 10vh;
-    position: absolute;
 }
 
 .date-grid {
