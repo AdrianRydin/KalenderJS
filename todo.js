@@ -4,7 +4,7 @@ function add() {
     let input_value = document.form_main.task.value;
     let input_text = document.createTextNode(input_value);
 
-    if (input_text === "") {
+    if (input_value === "") {
         return;
     }
 
