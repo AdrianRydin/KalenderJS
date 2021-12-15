@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="index.css">
     
 </head>
-<body>
-    <header class="flex w-100 slategray justify-end">
+<body class="slategray">
+    <header class="flex w-100 justify-end">
         <a href="javascript:void(0);" class="icon mr-4 absolute z-100 burger" onclick="burgerMenu()">
             <i class="fa fa-bars font-2r"></i>
         </a>
@@ -24,9 +24,9 @@
     </header>
     <main class="flex">
         <div id="toDo" class="todo">
-            <div id="toDoTop" class="flex justify-center align-center">
+            <div id="toDoTop" class="flex justify-center align-center mt-1">
                 <div id="weatherEmoji" class="emojiSize ">
-    
+                    
                 </div>
                 <div id="dayInfo" class=" flex flex-col align-center">
                     <p id="day" class="font-2r uppercase"></p>
@@ -35,13 +35,13 @@
                     <p id="temp" class="font-2r"></p>
                 </div>
             </div>
-            <div id="toDoBot" class="todolist vh-100 w-100 red flex flex-col align-center">
+            <div id="toDoBot" class="todolist vh-100 w-100 flex flex-col align-center">
                 <form action="" name="form_main">
                     <input type="text" name="task" id="task" class="addinput"/>
                     <button type="button" onclick="add()" class="button-3">Add</button>
                 </form>
     
-                <fieldset>
+                <fieldset id="fieldset">
                     <ul>
     
                     </ul>
@@ -50,14 +50,18 @@
         </div>
         
         <div id="calendar" class="calendar">
+            <div class="day-of-week-bg">
             <div class="day-of-week">
-                <p>Måndag</p>
-                <p>Tisdag</p>
-                <p>Onsdag</p>
-                <p>Torsdag</p>
-                <p>Fredag</p>
-                <p>Lördag</p>
-                <p>Söndag</p>
+                
+                <section>Måndag</section>
+                <section>Tisdag</section>
+                <section>Onsdag</section>
+                <section>Torsdag</section>
+                <section>Fredag</section>
+                <section>Lördag</section>
+                <section>Söndag</section>
+            
+            </div>
             </div>
             <div class="date-grid">
                 <section>1</section>

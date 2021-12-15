@@ -1,18 +1,24 @@
 .calendar{
-    display: none;
+    display: flex;
+    position: relative;
     height: 90vh;
-    width: 80vw;
-    background-color: #585555;
+    width: 75vw;
+    background-color: rgb(89, 102, 116);
+    margin-top: 1rem;
 }
 
 .date-grid {
-    height: 85vh;
-    width: 100%;
+    height: 80vh;
+    width: 95%;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     row-gap: 0.5rem;
     grid-template-rows: repeat(5, 1fr);
     column-gap: 0.5rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -47%);
 }
 
 .date-grid > section{
@@ -21,12 +27,27 @@
 }
 
 .day-of-week{
-    height: 5vh;
     display: grid;
+    height: 5vh;
+    position: relative;
     grid-template-columns: repeat(7, 1fr);
     text-align: center;
-    background-color: #C4C4C4;
+    margin-left: 2.3rem;
+    margin-right: 2.3rem;
 }
+
+.day-of-week > section{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.day-of-week-bg{
+    height: 5vh;
+    width: 100%;
+    background-color: rgb(26, 91, 165);
+}
+
 
 .next-month{
     background-color: #a0a0a0 !important;
