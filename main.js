@@ -43,7 +43,7 @@ function getDate() {
     setInterval(function(){
         date = new Date();
         time = date.toLocaleTimeString('en-GB'); 
-        timeSelector.innerHTML = time;},1000);
+        timeSelector.innerHTML = time;}, 0);
 }
 
 function getWeather() {
@@ -62,9 +62,7 @@ if (navigator.geolocation) {
       const api = "8ba035014de4131589877badb0269696";
   
       // API URL
-      const base =
-`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&` +
-`lon=${lon}&appid=${api}`;
+      const base = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&` + `lon=${lon}&appid=${api}`;
   
       // Calling the API
       fetch(base)

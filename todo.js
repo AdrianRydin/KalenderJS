@@ -1,4 +1,3 @@
-
 function add() {
     let li = document.createElement('LI');
     let input_value = document.form_main.task.value;
