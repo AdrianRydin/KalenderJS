@@ -59,9 +59,9 @@ const renderCalendar = () => {
             }
     });
     if (i === new Date().getDate() && date.getMonth() === new Date().getMonth()) {
-      days += `<div class="today">${i}@${counter}</div>`;
+      days += `<div class="today">${i}<br><br>${counter}</div>`;
     } else {
-      days += `<div>${i}@${counter}</div>`;
+      days += `<div>${i}<br><br>${counter}</div>`;
     }
   }
 
