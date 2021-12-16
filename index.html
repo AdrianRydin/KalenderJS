@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalender</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"/>
     <link rel="stylesheet" href="index.css">
     
 </head>
@@ -36,8 +36,9 @@
                 </div>
             </div>
             <div id="toDoBot" class="todolist vh-100 w-100 flex flex-col align-center">
-                <form action="" name="form_main">
-                    <input type="text" name="task" id="task" class="addinput"/>
+                <form action="" name="form_main" class="flex flex-col">
+                    <input type="text" name="task" id="task" class="input"/>
+                    <input type="date" class="input" id="date">
                     <button type="button" onclick="add()" class="button-3">Add</button>
                 </form>
     
@@ -49,64 +50,33 @@
             </div>
         </div>
         
-        <div id="calendar" class="calendar">
-            <div class="day-of-week-bg">
-            <div class="day-of-week">
-                
-                <section>Måndag</section>
-                <section>Tisdag</section>
-                <section>Onsdag</section>
-                <section>Torsdag</section>
-                <section>Fredag</section>
-                <section>Lördag</section>
-                <section>Söndag</section>
-            
+            <div class="calendar">
+              <div class="month">
+                <i class="fas fa-angle-left prev"></i>
+                <div class="date">
+                  <h1></h1>
+                  <p></p>
+                </div>
+                <i class="fas fa-angle-right next"></i>
+              </div>
+              <div class="weekdays">
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+                <div>Sun</div>
+              </div>
+              <div class="days"></div>
             </div>
-            </div>
-            <div class="date-grid">
-                <section>1</section>
-                <section>2</section>
-                <section>3</section>
-                <section>4</section>
-                <section>5</section>
-                <section>6</section>
-                <section>7</section>
-                <section>8</section>
-                <section>9</section>
-                <section>10</section>
-                <section>11</section>
-                <section>12</section>
-                <section>13</section>
-                <section>14</section>
-                <section>15</section>
-                <section>16</section>
-                <section>17</section>
-                <section>18</section>
-                <section>19</section>
-                <section>20</section>
-                <section>21</section>
-                <section>22</section>
-                <section>23</section>
-                <section>24</section>
-                <section>25</section>
-                <section>26</section>
-                <section>27</section>
-                <section>28</section>
-                <section>29</section>
-                <section>30</section>
-                <section>31</section>
-                <section class="next-month">1</section>
-                <section class="next-month">2</section>
-                <section class="next-month">3</section>
-                <section class="next-month">4</section>
-            </div>
-          </div>
         
     </main>
     
     
     <script src="main.js"></script>
     <script src="todo.js"></script>
+    <script src="calendar.js"></script>
     
 </body>
 </html>

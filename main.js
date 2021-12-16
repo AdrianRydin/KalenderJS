@@ -1,6 +1,8 @@
+
 let date = new Date();
 
-let dayDate = date.getDate() + '/' + date.getMonth() + '-' + date.getFullYear();
+let month = date.getMonth() + 1;
+let dayDate = date.getDate() + '/' + month + '-' + date.getFullYear();
 let time;
 let weekDay = date.getDay();
 let today;
