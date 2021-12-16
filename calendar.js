@@ -52,10 +52,16 @@ const renderCalendar = () => {
   }
 
   for (let i = 1; i <= lastDay; i++) {
+      let counter = 0;
+    todoList.forEach(todo => {
+            if (todo.date.getFullYear() === date.getFullYear() && todo.date.getMonth() === date.getMonth() && todo.date.getDate() === i) {
+                counter++;
+            }
+    });
     if (i === new Date().getDate() && date.getMonth() === new Date().getMonth()) {
-      days += `<div class="today">${i}</div>`;
+      days += `<div class="today">${i}@${counter}</div>`;
     } else {
-      days += `<div>${i}</div>`;
+      days += `<div>${i}@${counter}</div>`;
     }
   }
 
