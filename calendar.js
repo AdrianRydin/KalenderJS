@@ -1,4 +1,9 @@
 
+function setCurrentDate() {
+  let dateControl = document.querySelector('input[type="date"]');
+  dateControl.valueAsDate = new Date();
+}
+
 const renderCalendar = () => {
   date.setDate(1);
 
@@ -51,10 +56,13 @@ const renderCalendar = () => {
     days += `<div class="prev-date">${prevLastDay - x + 1}</div>`;
   }
 
+let todoList = getTodoList();
+
   for (let i = 1; i <= lastDay; i++) {
       let counter = 0;
     todoList.forEach(todo => {
-            if (todo.date.getFullYear() === date.getFullYear() && todo.date.getMonth() === date.getMonth() && todo.date.getDate() === i) {
+      let todoDate = new Date(todo.date);      
+      if (todoDate.getFullYear() === date.getFullYear() && todoDate.getMonth() === date.getMonth() && todoDate.getDate() === i) {
                 counter++;
             }
     });
@@ -84,6 +92,7 @@ document.querySelector(".next").addEventListener("click", () => {
   renderCalendar();
 });
 
-console.log(todoList);
-
-renderCalendar();
+window.addEventListener("load", () => {
+  setCurrentDate();
+  renderCalendar();
+});

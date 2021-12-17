@@ -1,34 +1,78 @@
 
-let todoList = [];
 
-let id = 0;
+function getLocalTodo() {
+    let todoList = getTodoList();
+    console.log(todoList);
+    todoList.forEach(todo => {
+        add(todo.txt, todo.date, todo.id, false);
+    });
 
-function generateID() {
-    return id++;
+    renderCalendar();
 }
 
-function add() {
-    let li = document.createElement('LI');
+function generateID() {
+    if(!localStorage.getItem("todoID")) {
+        localStorage.setItem("todoID", 0);
+      }
+    
+      let id = parseInt(localStorage.getItem("todoID"));
+      localStorage.setItem("todoID", id + 1);
+    
+      return id;
+}
+
+function formAdd() {
     let input_value = document.form_main.task.value;
     let input_date = new Date(document.form_main.date.value);
     let input_id = generateID();
-    let input_todo = {txt:input_value ,date:input_date, id:input_id};
-    let input_text = document.createTextNode(input_todo.txt);
-    console.log(input_date);
+    
+    
+    let todoAdd = add(input_value, input_date, input_id);
+    saveTodo(todoAdd);
+    renderCalendar();
+}
 
-    if (input_value === "") {
+function getTodoList() {
+  if(!localStorage.getItem("todoList")) {
+    localStorage.setItem("todoList", JSON.stringify([]));
+  }
+  return JSON.parse(localStorage.getItem("todoList"));
+}
+  
+function saveTodo(todo) {
+    let todoList = getTodoList();
+    todoList.push(todo);
+    localStorage.setItem("todoList", JSON.stringify(todoList));
+}
+
+function add(value, date, id) {
+    
+    if (value === "") {
         return;
     }
 
-    todoList.push(input_todo);
-    li.appendChild(input_text );
-    li.dataset.id = input_id;
+    let li = document.createElement('LI');
+    
+    let input_todo = {
+        txt:value,
+        date:String(date),
+        id:id};
+    let input_text = document.createTextNode(input_todo.txt);
+    
+
+    
+
+    li.appendChild(input_text);
+    li.dataset.id = id;
     document.querySelector('ul').appendChild(li);
     document.form_main.task.value = "";
+        
+
 
     createEditButton(li);
     createCloseButton(li);
-    renderCalendar();
+
+    return input_todo;
 }
 
 function createEditButton(li) {
@@ -42,6 +86,12 @@ function createEditButton(li) {
     //span.onclick = () => ;
 }
 
+function removeTodo(id) {
+    let todoList = getTodoList();
+    todoList = todoList.filter(todo => todo.id !== id);
+    localStorage.setItem("todoList", JSON.stringify(todoList));
+  }
+
 function createCloseButton(li) {
     let span = document.createElement("SPAN");
     let txt = document.createTextNode("\u00D7");
@@ -53,7 +103,8 @@ function createCloseButton(li) {
     span.onclick = () => {
         span.parentElement.remove()
         let id = parseInt(li.dataset.id);
-        todoList = todoList.filter(todo=>{ return todo.id !== id});
+        removeTodo(id);
+
         renderCalendar();
     };
 }
@@ -65,3 +116,7 @@ document.querySelector('ul').addEventListener('click', (e) => {
         e.target.classList.toggle('checked');
     }
 })
+
+window.addEventListener("load", () => {
+    getLocalTodo();
+});
