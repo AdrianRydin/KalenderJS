@@ -1,73 +1,15 @@
+
 let date = new Date();
 
-let dayDate = date.getDate() + '/' + date.getMonth() + '-' + date.getFullYear();
+let month = date.getMonth() + 1;
+let dayDate = date.getDate() + '/' + month + '-' + date.getFullYear();
 let time;
 let weekDay = date.getDay();
-let today = date.getDate();
-let year = date.getFullYear();
-let month = date.getMonth();
-let daysInMonth = 32 - new Date(year, month, 32).getDate();
+let today;
 let daySelector = document.getElementById("day");
 let dateSelector = document.getElementById("date");
 let timeSelector = document.getElementById("time");
 let emojiSelector = document.getElementById("weatherEmoji");
-
-let sections = document.getElementById('date-grid').children;
-let sectionDate = document.getElementById('date-grid').innerHTML;
-let dateText = document.getElementById('date-text').innerHTML;
-let empt = document.getElementById('date-text').innerText;
-
-// console.log(cell);
-
-// console.log(dateText);
-
-
-// console.log(sectionDate);
-
-// console.log(sections);
-
-// for (i=0; i <= 6; i++){
-//     if(empt == ""){
-//     document.getElementById('date-text').innerHTML = i + 1;
-//     cell.appendChild(dateText);
-//     dateNumber++;
-//     console.log(i);
-//     }
-//     else{
-        // document.getElementById('date-text').appendChild;
-
-        // console.log(dateNumber);
-        
-//     }
-// }
-
-// console.log(sectionDate);
-
-let i = weekDay;
-
-if(i > 0){
-
-for (let i = weekDay; i < daysInMonth + weekDay && i > 0; i++) {
-
-    sections[i - 2].innerHTML = i - weekDay +1;
-        
-}
-}else {
-    
-    for (j = 1; j < daysInMonth + weekDay; j++) {
-    
-    for (let i = 6; i < daysInMonth + 6 && i >= 0; i++) {
-    
-    sections[i].innerHTML= j++;
-    
-    }
-    
-    }
-    
-    }
-
-
-console.log(sections);
 
 
 function getDate() {

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalender</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"/>
     <link rel="stylesheet" href="index.css">
     
 </head>
@@ -36,9 +36,10 @@
                 </div>
             </div>
             <div id="toDoBot" class="todolist vh-100 w-100 flex flex-col align-center">
-                <form action="" name="form_main">
-                    <input type="text" name="task" id="task" class="addinput"/>
-                    <button type="button" onclick="add()" class="button-3">Add</button>
+                <form action="" name="form_main" class="flex flex-col">
+                    <input type="text" name="task" id="task" class="input"/>
+                    <input type="date" class="input" id="date">
+                    <button type="button" onclick="formAdd()" class="button-3">Add</button>
                 </form>
     
                 <fieldset id="fieldset">
@@ -49,64 +50,34 @@
             </div>
         </div>
         
-        <div id="calendar" class="calendar">
-            <div class="day-of-week-bg">
-            <div class="day-of-week">
-                
-                <section>Måndag</section>
-                <section>Tisdag</section>
-                <section>Onsdag</section>
-                <section>Torsdag</section>
-                <section>Fredag</section>
-                <section>Lördag</section>
-                <section>Söndag</section>
-            
+            <div class="calendar">
+              <div class="month">
+                <i class="fas fa-angle-left prev"></i>
+                <div class="date">
+                  <h1></h1>
+                  <p></p>
+                </div>
+                <i class="fas fa-angle-right next"></i>
+              </div>
+              <div class="weekdays">
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+                <div>Sun</div>
+              </div>
+              <div class="days"></div>
+
             </div>
-            </div>
-            <div class="date-grid" id="date-grid">
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-                <section><p id="date-text"></p></section>
-            </div>
-          </div>
         
     </main>
     
     
     <script src="main.js"></script>
     <script src="todo.js"></script>
+    <script src="calendar.js"></script>
     
 </body>
 </html>
