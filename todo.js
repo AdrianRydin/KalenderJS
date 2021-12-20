@@ -1,5 +1,7 @@
 
-
+/**
+ * hämtar alla todos som är sparade i localstorage och displayar de på sidan
+ */
 function getLocalTodo() {
     let todoList = getTodoList();
     console.log(todoList);
@@ -9,7 +11,9 @@ function getLocalTodo() {
 
     renderCalendar();
 }
-
+/**
+ * kollar senaste id i localstorage och adderar 1 så at tvarje todo har eget id
+ */
 function generateID() {
     if(!localStorage.getItem("todoID")) {
         localStorage.setItem("todoID", 0);
@@ -20,7 +24,9 @@ function generateID() {
     
       return id;
 }
-
+/**
+ * skaffar todo värdena från formen på sidan
+ */
 function formAdd() {
     let input_value = document.form_main.task.value;
     let input_date = new Date(document.form_main.date.value);
@@ -31,7 +37,9 @@ function formAdd() {
     saveTodo(todoAdd);
     renderCalendar();
 }
-
+/**
+ * hämtar todos som är sparade i en array i localstorage
+ */
 function getTodoList() {
   if(!localStorage.getItem("todoList")) {
     localStorage.setItem("todoList", JSON.stringify([]));
@@ -39,12 +47,23 @@ function getTodoList() {
   return JSON.parse(localStorage.getItem("todoList"));
 }
   
+/**
+ * Sparar todo object i en array som pushas in i localstorage
+ * @param  {object} todo todo object som har texten, date och id för todon
+ * 
+ */
 function saveTodo(todo) {
     let todoList = getTodoList();
     todoList.push(todo);
     localStorage.setItem("todoList", JSON.stringify(todoList));
 }
-
+/**
+ * Skapar todo li element med värdena som användaren har specificerat
+ * @param  {string} value Text värdet när man lägger in en todo
+ * @param  {Date} date Datum värdet som man väljer när man lägger in en todo
+ * @param  {int} id När man skapar en todo så får todon ett id som är skapat av generateID()
+ * 
+ */
 function add(value, date, id) {
     
     if (value === "") {
@@ -75,34 +94,68 @@ function add(value, date, id) {
     return input_todo;
 }
 
-function createEditButton(li) {
+function editTodo(id, txt, date) {
+    let todoList = getTodoList();
+
+    let todoIndex = 0;
+    for(let i = 0; i < todoList.length; i++) {
+        if(todoList[i].id === id) {
+            todoIndex = i;
+            break;
+        }
+    }
+
+    todoList = todoList.filter(todo => todo.id === id);
+
+    localStorage.setItem("todoList", JSON.stringify(todoList));
+}
+/**
+ *  lägger till en edit knapp i li element så man kan edita todon
+ * @param  {HTMLElement} parent förälder element i html
+ * 
+ */
+function createEditButton(parent) {
     let span = document.createElement("SPAN");
     let txt = document.createTextNode("\u270E");
 
     span.className = "edit";
     span.appendChild(txt);
-    li.appendChild(span);
+    parent.appendChild(span);
 
-    //span.onclick = () => ;
+    span.onclick = () => {
+    span.parentElement.remove()
+        let id = parseInt(parent.dataset.id);
+        editTodo(id, );
+
+        renderCalendar();
+    };
 }
-
+/**
+ * tar bort todo från arrayen och pushar den nya till localstorage
+ * @param  {int} id todo objectets id
+ * 
+ */
 function removeTodo(id) {
     let todoList = getTodoList();
     todoList = todoList.filter(todo => todo.id !== id);
     localStorage.setItem("todoList", JSON.stringify(todoList));
   }
-
-function createCloseButton(li) {
+/**
+ * lägger till en stäng knapp så man kan ta bort en todo
+ * @param  {HTMLElement} parent förälder element i html
+ * 
+ */
+function createCloseButton(parent) {
     let span = document.createElement("SPAN");
     let txt = document.createTextNode("\u00D7");
     
     span.className = "close";
     span.appendChild(txt);
-    li.appendChild(span);
+    parent.appendChild(span);
     
     span.onclick = () => {
         span.parentElement.remove()
-        let id = parseInt(li.dataset.id);
+        let id = parseInt(parent.dataset.id);
         removeTodo(id);
 
         renderCalendar();
