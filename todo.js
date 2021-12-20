@@ -1,3 +1,10 @@
+const todoEditModal = document.querySelector("#todo-edit-modal");
+const todoEditModalSubmit = document.querySelector("#todo-edit-modal .modal-submit");
+const todoEditModalClose = document.querySelectorAll("#todo-edit-modal .modal-close");
+const todoEditModalDelete = document.querySelector("#todo-edit-modal .delete");
+
+const todoEditModalText = document.querySelector("#todo-edit-modal input[type='text']");
+const todoEditModalDate = document.querySelector("#todo-edit-modal input[type='date']") ;
 
 /**
  * hämtar alla todos som är sparade i localstorage och displayar de på sidan
@@ -17,12 +24,12 @@ function getLocalTodo() {
 function generateID() {
     if(!localStorage.getItem("todoID")) {
         localStorage.setItem("todoID", 0);
-      }
+    }
     
-      let id = parseInt(localStorage.getItem("todoID"));
-      localStorage.setItem("todoID", id + 1);
+    let id = parseInt(localStorage.getItem("todoID"));
+    localStorage.setItem("todoID", id + 1);
     
-      return id;
+    return id;
 }
 /**
  * skaffar todo värdena från formen på sidan
@@ -32,9 +39,10 @@ function formAdd() {
     let input_date = new Date(document.form_main.date.value);
     let input_id = generateID();
     
-    
     let todoAdd = add(input_value, input_date, input_id);
-    saveTodo(todoAdd);
+    if(todoAdd) {
+        saveTodo(todoAdd);
+    }
     renderCalendar();
 }
 /**
@@ -67,7 +75,7 @@ function saveTodo(todo) {
 function add(value, date, id) {
     
     if (value === "") {
-        return;
+        return false;
     }
 
     let li = document.createElement('LI');
@@ -77,17 +85,12 @@ function add(value, date, id) {
         date:String(date),
         id:id};
     let input_text = document.createTextNode(input_todo.txt);
-    
-
-    
 
     li.appendChild(input_text);
     li.dataset.id = id;
     document.querySelector('ul').appendChild(li);
     document.form_main.task.value = "";
         
-
-
     createEditButton(li);
     createCloseButton(li);
 
@@ -105,9 +108,28 @@ function editTodo(id, txt, date) {
         }
     }
 
-    todoList = todoList.filter(todo => todo.id === id);
+    let todo = todoList[todoIndex];
+    todo.txt = txt;
+    todo.date = String(date);
 
     localStorage.setItem("todoList", JSON.stringify(todoList));
+}
+
+function getTodoById(id) {
+    let todoList = getTodoList();
+
+    let todoIndex = 0;
+    for(let i = 0; i < todoList.length; i++) {
+        if(todoList[i].id === id) {
+            return todoList[i];
+        }
+    }
+
+    return {
+        id: -1,
+        txt: "Unknown",
+        date: "Unknown",
+    };
 }
 /**
  *  lägger till en edit knapp i li element så man kan edita todon
@@ -123,11 +145,14 @@ function createEditButton(parent) {
     parent.appendChild(span);
 
     span.onclick = () => {
-    span.parentElement.remove()
         let id = parseInt(parent.dataset.id);
-        editTodo(id, );
+        let todo = getTodoById(id);
 
-        renderCalendar();
+        todoEditModal.style.display = "block";
+        todoEditModal.dataset.current_id = id;
+
+        todoEditModalText.value = todo.txt;
+        todoEditModalDate.valueAsDate = new Date(todo.date);
     };
 }
 /**
@@ -162,14 +187,29 @@ function createCloseButton(parent) {
     };
 }
 
-document.querySelectorAll('li').forEach(createCloseButton);
-
-document.querySelector('ul').addEventListener('click', (e) => {
-    if (e.target.tagName === 'LI') {
-        e.target.classList.toggle('checked');
-    }
-})
-
 window.addEventListener("load", () => {
     getLocalTodo();
+});
+
+todoEditModalClose.forEach(element => { 
+    element.addEventListener("click", (e) => {
+        todoEditModal.style.display = "none";
+    });
+});
+
+todoEditModalSubmit.addEventListener("click", (e) => {
+    let id = parseInt(todoEditModal.dataset.current_id);
+    let text = todoEditModalText.value;
+    let date = new Date(todoEditModalDate.value);
+
+    if (text !== "") {
+        editTodo(id, text, date);
+        window.location.reload();
+    }
+});
+
+todoEditModalDelete.addEventListener("click", (e) => {
+    let id = parseInt(todoEditModal.dataset.current_id);
+    removeTodo(id);
+    window.location.reload();
 });

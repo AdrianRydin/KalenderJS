@@ -3,8 +3,10 @@
  * sätter formen till dagens datum så den inte är blank
  */
 function setCurrentDate() {
-  let dateControl = document.querySelector('input[type="date"]');
-  dateControl.valueAsDate = new Date();
+  let dateControl = document.querySelectorAll('input[type="date"]');
+  dateControl.forEach(element => {
+    element.valueAsDate = new Date();
+  })
 }
 /**
  * renderar dagarna från första veckan av månaden där dagar från förra månaden intränger
@@ -40,32 +42,59 @@ function renderCurrentMonth() {
   // Sista dagen på månaden
   const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 
-  // Rendera denna månaden
-  for (let i = 1; i <= lastDay; i++) {
-    // Hur många todos denna dagen har
-    let counter = 0;
-    todoList.forEach(todo => {
-      let todoDate = new Date(todo.date);
+  // https://sholiday.faboul.se/dagar/v2.1/{YEAR}/{MONTH}
 
-      // Kolla om todos datum passar med datumet
-      if (todoDate.getFullYear() === date.getFullYear() && 
-          todoDate.getMonth() === date.getMonth() && 
-          todoDate.getDate() === i) 
-      {
-        counter++;
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        let data = JSON.parse(xhttp.responseText);
+        console.log(data);
+
+        // Rendera denna månaden
+        for (let i = 1; i <= lastDay; i++) {
+          let dayInfo = data.dagar[i - 1];
+
+          // Hur många todos denna dagen har
+          let counter = 0;
+          todoList.forEach(todo => {
+            let todoDate = new Date(todo.date);
+
+            // Kolla om todos datum passar med datumet
+            if (todoDate.getFullYear() === date.getFullYear() && 
+                todoDate.getMonth() === date.getMonth() && 
+                todoDate.getDate() === i) 
+            {
+              counter++;
+            }
+          });
+
+          let today = new Date();
+          // Kolla om den här dagen är idag och då markera dagen
+          if (i === today.getDate() && 
+              date.getMonth() === today.getMonth() &&
+              date.getFullYear() === today.getFullYear()) {
+
+            if(dayInfo.helgdag) {
+              result += `<div class="today">${i}<br><br>${counter}<br>${dayInfo.helgdag}</div>`;
+            } else {
+              result += `<div class="today">${i}<br><br>${counter}</div>`;
+            }
+          } else {
+            if(dayInfo.helgdag) {
+              result += `<div class="red">${i}<br><br>${counter}<br>${dayInfo.helgdag}</div>`;
+            } else {
+              result += `<div>${i}<br><br>${counter}</div>`;
+            }
+          }
+        }
+
       }
-    });
+  };
 
-    let today = new Date();
-    // Kolla om den här dagen är idag och då markera dagen
-    if (i === today.getDate() && 
-        date.getMonth() === today.getMonth() &&
-        date.getFullYear() === today.getFullYear()) {
-      result += `<div class="today">${i}<br><br>${counter}</div>`;
-    } else {
-      result += `<div>${i}<br><br>${counter}</div>`;
-    }
-  }
+  let year = date.getFullYear();
+  let month = date.getMonth() + 1;
+  xhttp.open("GET", `https://sholiday.faboul.se/dagar/v2.1/${year}/${month}`, false);
+  xhttp.send();
 
   return result;
 }

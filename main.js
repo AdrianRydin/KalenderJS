@@ -11,7 +11,9 @@ let dateSelector = document.getElementById("date");
 let timeSelector = document.getElementById("time");
 let emojiSelector = document.getElementById("weatherEmoji");
 
-
+/**
+ * lägger till dag, datum och tid i välkomstsegmentet över todos
+ */
 function getDate() {
     switch (weekDay) {
         case 0:
@@ -48,6 +50,9 @@ function getDate() {
         timeSelector.innerHTML = time;}, 0);
 }
 
+/**
+ * visar en emoji beroende på temperatur och visar även temperaturen beroende på lon och lat koordinater under tiden i välkomstsegmentet 
+ */
 function getWeather() {
     
 const kelvin = 273;
@@ -88,7 +93,9 @@ if (navigator.geolocation) {
   }
   
 }
-
+/**
+ * för att få burgermenyn till att vara synlig när man klickar på burger meny ikonen
+ */
 function burgerMenu() {
     let x = document.getElementById("burgerList");
     if (x.style.display === "block") {

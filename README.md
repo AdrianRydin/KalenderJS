@@ -12,7 +12,7 @@ Miniprojekt Kalender grupparbete
 * Skapa och designa kalendervyn med en månadsvy över aktuell månad - (G) Check
 * Skapade todos skall kopplas till kalender och visas med en siffra som representeras antal todos på en viss dag. - (G) Check
 * Spara todos i local storage och visa dessa vid omladdning av sidan - (VG) Check
-* Användaren skall kunna ändra en todo - (VG) pending
+* Användaren skall kunna ändra en todo - (VG) check
 * Användaren skall kunna växla till andra månader i kalendervyn - (VG) Check
-* Svenska helgdagar visas i kalendern - (VG) pending 
+* Svenska helgdagar visas i kalendern - (VG) check 
 * Filtrera todolistan utifrån vald dag i kalendern, det ska gå avmarkera vald dag (VG) pending
