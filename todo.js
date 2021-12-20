@@ -17,8 +17,10 @@ function generateID() {
     
       let id = parseInt(localStorage.getItem("todoID"));
       localStorage.setItem("todoID", id + 1);
-    
+      
+      
       return id;
+
 }
 
 function formAdd() {
@@ -120,3 +122,4 @@ document.querySelector('ul').addEventListener('click', (e) => {
 window.addEventListener("load", () => {
     getLocalTodo();
 });
+

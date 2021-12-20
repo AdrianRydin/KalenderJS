@@ -67,7 +67,7 @@ let todoList = getTodoList();
             }
     });
     if (i === new Date().getDate() && date.getMonth() === new Date().getMonth()) {
-      days += `<div class="today">${i}<br><br>${counter}</div>`;
+      days += `<div class="today" style="background-color: #167e56;">${i}<br><br>${counter}</div>`;
     } else {
       days += `<div>${i}<br><br>${counter}</div>`;
     }
