@@ -42,11 +42,9 @@
                     <button type="button" onclick="formAdd()" class="button-3">Add</button>
                 </form>
     
-                <fieldset id="fieldset">
                     <ul>
     
                     </ul>
-                </fieldset>
             </div>
         </div>
         
@@ -72,6 +70,21 @@
 
             </div>
         
+            <div id="todo-edit-modal" class="modal">
+                <div class="modal-content">
+                    <div class="header">
+                        <p class="font-2r">Redigera todo</p>
+                        <p class="modal-close" id="close">X</p>
+                    </div>
+                    
+                    <input class="input" type="text" name="task"/>
+                    <input class="input" type="date">
+                    <div class="buttons">
+                        <button type="button" class="button-3 delete modal-close mr-4 red">Delete</button>
+                        <button type="button" class="button-3 modal-submit modal-close">Ändra</button>
+                    </div>
+                </div>
+            </div>
     </main>
     
     
