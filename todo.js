@@ -96,7 +96,12 @@ function add(value, date, id) {
 
     return input_todo;
 }
-
+/**
+ * updaterar todo med ändringarna som gjordes
+ * @param {int} id id av todon
+ * @param {string} txt text value av todon
+ * @param {Date} date date value av todon
+ */
 function editTodo(id, txt, date) {
     let todoList = getTodoList();
 
@@ -114,11 +119,15 @@ function editTodo(id, txt, date) {
 
     localStorage.setItem("todoList", JSON.stringify(todoList));
 }
-
+/**
+ * hämtar rätt todo i todo array
+ * @param {int} id id av todo som ska hämtas
+ * @returns om den hittar object med id så skickas den vidare
+ * @returns om den inte hittar ett objekt med id så skickar den tillbaka failsafe todo
+ */
 function getTodoById(id) {
     let todoList = getTodoList();
-
-    let todoIndex = 0;
+    
     for(let i = 0; i < todoList.length; i++) {
         if(todoList[i].id === id) {
             return todoList[i];

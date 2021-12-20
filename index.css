@@ -188,4 +188,9 @@ li{
     li{
         max-width: 20vw;
     }
+    .modal-content {
+        width: 40%;
+
+    }
+
 }

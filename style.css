@@ -75,87 +75,44 @@
     padding: 0.2rem;
   }
   
-  .days div {
+  .days > div {
     font-size: 1.4rem;
     margin: 0.3rem;
-    
+    background-color: #777;
     
     text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
-    transition: background-color 0.2s;
   }
   
-  .days div:hover:not(.today) {
-    background-color: #262626;
+  .days > div:hover {
+    filter: brightness(50%);
     border: 0.2rem solid #777;
     cursor: pointer;
   }
   
   .prev-date,
   .next-date {
-    opacity: 0.5;
+    filter: brightness(90%);
   }
   
   .today {
-    background-color: #167e56;
+    background-color: #167e56 !important;
   }
 
+  .red-day{
+    background-color: red !important;
+  }
 
-/*
-.calendar{
-    display: none;
-    position: relative;
-    height: 90vh;
-    width: 75vw;
-    background-color: rgb(89, 102, 116);
-    margin-top: 1rem;
-}
+  .day{
 
-.date-grid {
-    height: 80vh;
-    width: 95%;
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    row-gap: 0.5rem;
-    grid-template-rows: repeat(5, 1fr);
-    column-gap: 0.5rem;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -47%);
-}
+  }
 
-.date-grid > section{
-    border: 1px solid black;
-    background-color: #F1F1F1;
-}
+  .holiday{
 
-.day-of-week{
-    display: grid;
-    height: 5vh;
-    position: relative;
-    grid-template-columns: repeat(7, 1fr);
-    text-align: center;
-    margin-left: 2.3rem;
-    margin-right: 2.3rem;
-}
+  }
 
-.day-of-week > section{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.day-of-week-bg{
-    height: 5vh;
-    width: 100%;
-    background-color: rgb(26, 91, 165);
-}
-
-
-.next-month{
-    background-color: #a0a0a0 !important;
-}
-*/
+  .todocount{
+    
+  }
 
 .modal {
   display: none;
@@ -174,7 +131,7 @@
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 40%;
+  width: 80%;
 }
 
 #todo-edit-modal > .modal-content {

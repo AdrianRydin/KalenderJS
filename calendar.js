@@ -29,50 +29,42 @@ function renderPrevMonth() {
 
   return result;
 }
-
+/**
+ * skapar HTMLElement beroende på dag så att de har olika klasser
+ * @param {int} day vilken dag det är i månaden
+ * @param {boolean} today är true om det är idag
+ * @param {int} todoCounter hur många todos en dag har
+ * @param {string} helgdag namn på helgdagen
+ * @returns HTMLElement 
+ */
 function renderDay(day, today, todoCounter, helgdag) {
   let result = "";
 
   if(today) {
-    result += "<div class=\"today\">";
+    result += "<div class=\"current-day today\">";
   } else if(helgdag) {
-    result += "<div class=\"red\">";
+    result += "<div class=\"current-day red-day\">";
   }else {
-    result += "<div>";
+    result += "<div class=\"current-day\">";
   }
   
+  result += "<div class='day'>"
   result += day.toString();
+  result += "</div>"
 
-  if (todoCounter > 0 && helgdag) {
-    result += "<br>";
-    result += "<br>";
+  if(helgdag) {
+    result += "<div class='holiday'>"
     result += helgdag;
-    result += "<br>";
-    result += "<br>";
-    result += "todos: " + todoCounter.toString();
-    
-  }else if(todoCounter > 0) {
-    result += "<br>";
-    result += "<br>";
-    result += "todos: " + todoCounter.toString();
+    result += "</div>"
+  }
 
-  }else if (helgdag) {
-    result += "<br>";
-    result += "<br>";
-    result += helgdag;
-    
-  }else{
-    
+  if (todoCounter > 0) {
+    result += "<div class='todocount'>"
+    result += "todos: " + todoCounter.toString();
+    result += "</div>"
   }
 
   result += "</div>";
-
-  /*
-  if(helgdag) {
-    result += `<div class="red">${day}<br><br>${todoCounter}<br>${helgdag}</div>`;
-  } else {
-    result += `<div>${i}<br><br>${counter}</div>`;
-  }*/
 
   return result;
 }
