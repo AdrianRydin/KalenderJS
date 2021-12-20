@@ -29,6 +29,54 @@ function renderPrevMonth() {
 
   return result;
 }
+
+function renderDay(day, today, todoCounter, helgdag) {
+  let result = "";
+
+  if(today) {
+    result += "<div class=\"today\">";
+  } else if(helgdag) {
+    result += "<div class=\"red\">";
+  }else {
+    result += "<div>";
+  }
+  
+  result += day.toString();
+
+  if (todoCounter > 0 && helgdag) {
+    result += "<br>";
+    result += "<br>";
+    result += helgdag;
+    result += "<br>";
+    result += "<br>";
+    result += "todos: " + todoCounter.toString();
+    
+  }else if(todoCounter > 0) {
+    result += "<br>";
+    result += "<br>";
+    result += "todos: " + todoCounter.toString();
+
+  }else if (helgdag) {
+    result += "<br>";
+    result += "<br>";
+    result += helgdag;
+    
+  }else{
+    
+  }
+
+  result += "</div>";
+
+  /*
+  if(helgdag) {
+    result += `<div class="red">${day}<br><br>${todoCounter}<br>${helgdag}</div>`;
+  } else {
+    result += `<div>${i}<br><br>${counter}</div>`;
+  }*/
+
+  return result;
+}
+
 /**
  * renderar dagarna i månaden som ska visas
  * @returns en div per dag 
@@ -74,17 +122,9 @@ function renderCurrentMonth() {
               date.getMonth() === today.getMonth() &&
               date.getFullYear() === today.getFullYear()) {
 
-            if(dayInfo.helgdag) {
-              result += `<div class="today">${i}<br><br>${counter}<br>${dayInfo.helgdag}</div>`;
-            } else {
-              result += `<div class="today">${i}<br><br>${counter}</div>`;
-            }
+            result += renderDay(i, true, counter, dayInfo.helgdag);
           } else {
-            if(dayInfo.helgdag) {
-              result += `<div class="red">${i}<br><br>${counter}<br>${dayInfo.helgdag}</div>`;
-            } else {
-              result += `<div>${i}<br><br>${counter}</div>`;
-            }
+            result += renderDay(i, false, counter, dayInfo.helgdag);
           }
         }
 
