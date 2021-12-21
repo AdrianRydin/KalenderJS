@@ -11,13 +11,32 @@ const todoEditModalDate = document.querySelector("#todo-edit-modal input[type='d
  */
 function getLocalTodo() {
     let todoList = getTodoList();
-    console.log(todoList);
     todoList.forEach(todo => {
         add(todo.txt, todo.date, todo.id, false);
     });
 
     renderCalendar();
 }
+
+function renderTodos() {
+    let list = document.querySelector("#toDoBot > ul");
+    list.innerHTML = "";
+
+    let todoList = getTodoList();
+    if(selectedDate !== null) {
+        todoList = todoList.filter(todo => {
+            let todoDate = new Date(todo.date);
+            return todoDate.getFullYear() === selectedDate.getFullYear() && 
+                   todoDate.getMonth() === selectedDate.getMonth() && 
+                   todoDate.getDate() === selectedDate.getDate();
+        }); 
+    }
+
+    todoList.forEach(todo => {
+        add(todo.txt, todo.date, todo.id, false);
+    });
+}
+
 /**
  * kollar senaste id i localstorage och adderar 1 så at tvarje todo har eget id
  */

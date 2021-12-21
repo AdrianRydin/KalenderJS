@@ -1,3 +1,5 @@
+let selectedDate = null;
+let selectedDateElement = null;
 
 /**
  * sätter formen till dagens datum så den inte är blank
@@ -40,13 +42,20 @@ function renderPrevMonth() {
 function renderDay(day, today, todoCounter, helgdag) {
   let result = "";
 
+  result += "<div ";
+  result += "onclick=\"selectDay(this)\" ";
+  result += "id=\"current-day\" ";
+  let calendarDate = new Date(date.getFullYear(), date.getMonth(), day);
+  result += `data-date=\"${String(calendarDate)}\"`;
+
   if(today) {
-    result += "<div class=\"current-day today\">";
+    result += "class=\"current-day today\" ";
   } else if(helgdag) {
-    result += "<div class=\"current-day red-day\">";
+    result += "class=\"current-day red-day\" ";
   }else {
-    result += "<div class=\"current-day\">";
+    result += "class=\"current-day\" ";
   }
+  result += ">";
   
   result += "<div class='day'>"
   result += day.toString();
@@ -64,9 +73,52 @@ function renderDay(day, today, todoCounter, helgdag) {
     result += "</div>"
   }
 
+  result += "<div id='selected'>";
+  result += "</div>";
+
   result += "</div>";
 
   return result;
+}
+
+function selectDay(currentElement) {
+  let calendarDate = new Date(currentElement.dataset.date);
+
+  if(selectedDateElement === null) {
+    if(selectedDate === null) {
+      selectedDate = calendarDate;
+      selectedDateElement = currentElement;
+      currentElement.classList.add("date-selected");
+    }
+  } else {
+    if(calendarDate.getFullYear() === selectedDate.getFullYear() && 
+       calendarDate.getMonth() === selectedDate.getMonth() && 
+       calendarDate.getDate() === selectedDate.getDate()) {
+      selectedDate = null;
+      selectedDateElement = null;
+      currentElement.classList.remove("date-selected");
+    } else {
+      selectedDateElement.classList.remove("date-selected");
+      currentElement.classList.add("date-selected");
+      selectedDate = calendarDate;
+      selectedDateElement = currentElement;
+    }
+  }
+
+
+  renderTodos();
+
+  /*
+  todoList = todoList.filter(todo => {
+    let todoDate = new Date(todo.date);
+    return todoDate.getFullYear() === calendarDate.getFullYear() && 
+           todoDate.getMonth() === calendarDate.getMonth() && 
+           todoDate.getDate() === calendarDate.getDate();
+  });
+
+  for (let i = 0; i < todoList.length; i++) {
+    console.log(todoList[i]);
+  }*/
 }
 
 /**
@@ -88,7 +140,7 @@ function renderCurrentMonth() {
   xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         let data = JSON.parse(xhttp.responseText);
-        console.log(data);
+
 
         // Rendera denna månaden
         for (let i = 1; i <= lastDay; i++) {
