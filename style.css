@@ -101,6 +101,36 @@
   .red-day{
     background-color: red !important;
   }
+  :root {
+    --borderWidth: 2px;
+    --height: 12px;
+    --width: 6px;
+    --borderColor: aqua;
+  }
+  .date-selected {
+    /*
+    display: inline-block;
+    transform: rotate(45deg);
+    height: var(--height);
+    width: var(--width);
+    border-bottom: var(--borderWidth) solid var(--borderColor);
+    border-right: var(--borderWidth) solid var(--borderColor);
+    */
+  } 
+
+  #selected {
+    margin-left: 5px;
+    display: none;
+  transform: rotate(45deg);
+  height: var(--height);
+  width: var(--width);
+  border-bottom: var(--borderWidth) solid var(--borderColor);
+  border-right: var(--borderWidth) solid var(--borderColor);
+  }
+
+  .date-selected #selected {
+    display: inline-block;
+  }
 
   .day{
 
