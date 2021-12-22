@@ -15,4 +15,4 @@ Miniprojekt Kalender grupparbete
 * Användaren skall kunna ändra en todo - (VG) check
 * Användaren skall kunna växla till andra månader i kalendervyn - (VG) Check
 * Svenska helgdagar visas i kalendern - (VG) check 
-* Filtrera todolistan utifrån vald dag i kalendern, det ska gå avmarkera vald dag (VG) pending
+* Filtrera todolistan utifrån vald dag i kalendern, det ska gå avmarkera vald dag (VG) check
