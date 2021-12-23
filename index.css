@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Monoton');
+
 *{
     padding: 0;
     margin: 0;
@@ -14,7 +16,21 @@ a{
     text-decoration: none;
     color: black;
 }
-
+h1{
+    font-family: "Monoton", Helvetica, sans-serif;
+    letter-spacing: 5px;
+    display: inline;
+    text-transform: uppercase;
+    color: #F49E4C;
+    font-size: .75rem;
+}
+@supports (-webkit-background-clip: text) {
+	h1 {
+		color: transparent;
+		background: linear-gradient(7deg, #F5EE9E 50%, #F49E4C 0);
+		-webkit-background-clip: text;
+	}
+}
 .lineheight>a{
     background-color: slategray;
     border-top: 1px solid rgb(0, 0, 0, 0.5);;
@@ -24,15 +40,7 @@ a{
 .lineheight>a:hover{
     background-color: rgb(0, 0, 0, 0.5);
 }
-.burgerlist{
-    display: none;
-    margin-top: 3rem;
-    background-color: lightslategray;
-    width: 20rem;
-    height: 100%;
-    right: -20rem;
-    animation: slide .5s forwards;
-}
+
 li{
     list-style: none;
     user-select: none;
@@ -175,9 +183,7 @@ li{
 /*Media quaries*/
 
 @media (min-width: 770px) {
-    .burger{
-        display: none;
-    }
+    
     .calendar{
         display: flex;
         flex-direction: column;
@@ -193,4 +199,19 @@ li{
 
     }
 
+}
+@media (min-width:300px){
+    h1{
+        font-size: 1rem;
+    }
+}
+@media (min-width:400px){
+    h1{
+        font-size: 1.5rem;
+    }
+}
+@media (min-width:480px){
+    h1{
+        font-size: 2rem;
+    }
 }
