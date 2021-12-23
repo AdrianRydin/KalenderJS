@@ -80,7 +80,11 @@ function renderDay(day, today, todoCounter, helgdag) {
 
   return result;
 }
-
+/**
+ * visar todos som är kopplade till dagen man selectat 
+ * och ger den selectade dagen ny css klass så man ser att den är selectad
+ * @param {HTMLElement} currentElement Elementet som kallar på funktionen
+ */
 function selectDay(currentElement) {
   let calendarDate = new Date(currentElement.dataset.date);
 
@@ -108,17 +112,6 @@ function selectDay(currentElement) {
 
   renderTodos();
 
-  /*
-  todoList = todoList.filter(todo => {
-    let todoDate = new Date(todo.date);
-    return todoDate.getFullYear() === calendarDate.getFullYear() && 
-           todoDate.getMonth() === calendarDate.getMonth() && 
-           todoDate.getDate() === calendarDate.getDate();
-  });
-
-  for (let i = 0; i < todoList.length; i++) {
-    console.log(todoList[i]);
-  }*/
 }
 
 /**
@@ -226,7 +219,7 @@ function renderCalendar(){
   ];
 
   // Uppdatera kalender headern med rätt månad och år
-  document.querySelector(".date h1").innerHTML = months[date.getMonth()];
+  document.querySelector(".date h2").innerHTML = months[date.getMonth()];
   document.querySelector(".date p").innerHTML = date.getFullYear();
 
   // All html kod som genereras av kalendern 

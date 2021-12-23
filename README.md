@@ -3,9 +3,13 @@ Miniprojekt Kalender grupparbete
 
 [demo] (https://adrianrydin.github.io/KalenderJS/)
 
+Github: https://github.com/AdrianRydin/KalenderJS
+
+Figma: https://www.figma.com/file/DFw2VFSMui8V0L38ozQKRo/Kalender-Uppgift-JS?node-id=0%3A1
+
 
 * Skapa layouten enligt skiss (dölj kalender på mobilvy) - (G) Check
-* Skapa och designa titeln för verktyget - (G) pending
+* Skapa och designa titeln för verktyget - (G) check 
 * Skapa och designa välkomstsegmentet (delen ovanför todo-listan). Segmentet skall minst innehålla tid, veckodag och datum. - (G) Check
 * Användaren skall kunna lägga till en todo - (G) Check
 * Användaren skall kunna ta bort en todo - (G) Check

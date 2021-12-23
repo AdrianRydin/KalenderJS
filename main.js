@@ -93,17 +93,7 @@ if (navigator.geolocation) {
   }
   
 }
-/**
- * för att få burgermenyn till att vara synlig när man klickar på burger meny ikonen
- */
-function burgerMenu() {
-    let x = document.getElementById("burgerList");
-    if (x.style.display === "block") {
-      x.style.display = "none";
-    } else {
-      x.style.display = "block";
-    }
-  }
+
 
 window.addEventListener("load", () => {
     getWeather();

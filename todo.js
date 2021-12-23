@@ -17,7 +17,9 @@ function getLocalTodo() {
 
     renderCalendar();
 }
-
+/**
+ * Kollar local todolist och lägger in de som finns där
+ */
 function renderTodos() {
     let list = document.querySelector("#toDoBot > ul");
     list.innerHTML = "";
@@ -104,8 +106,10 @@ function add(value, date, id) {
         date:String(date),
         id:id};
     let input_text = document.createTextNode(input_todo.txt);
+    
 
     li.appendChild(input_text);
+    
     li.dataset.id = id;
     document.querySelector('ul').appendChild(li);
     document.form_main.task.value = "";
